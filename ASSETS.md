@@ -26,6 +26,10 @@ Use case: photorealistic-natural. Wide landscape editorial food photograph for a
 Use case: photorealistic-natural. Editorial still life beauty spa photography for a sophisticated beauty studio website. Cream sculptural ceramic vase with single olive branch, warm light beige rolled towel, small amber glass cosmetic bottle, limestone tray on pale travertine surface with arched ivory plaster wall behind. Soft sunlight shadows, organic minimal composition, very refined expensive natural skincare aesthetic, cream and olive palette. Landscape 1536x1024. No text, no logos, no people.
 ```
 
+## Обложка для соцсетей
+
+`public/assets/og-cover.png` — 1200×630, собрана из вёрстки проекта (шрифт Manrope, фирменные цвета) и снята headless-браузером. Генеративных изображений и фотографий в ней нет.
+
 ## Шрифт
 
 Manrope, локальные файлы начертаний 400–800 из Google Fonts. Лицензия SIL Open Font License находится рядом с файлами шрифта в `public/assets/Manrope-OFL.txt`.

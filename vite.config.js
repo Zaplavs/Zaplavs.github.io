@@ -9,6 +9,8 @@ export default defineConfig({
         forma: fileURLToPath(new URL('./projects/forma.html', import.meta.url)),
         coffee: fileURLToPath(new URL('./projects/coffee.html', import.meta.url)),
         beauty: fileURLToPath(new URL('./projects/beauty.html', import.meta.url)),
+        potok: fileURLToPath(new URL('./projects/potok.html', import.meta.url)),
+        dovod: fileURLToPath(new URL('./projects/dovod.html', import.meta.url)),
       },
     },
   },

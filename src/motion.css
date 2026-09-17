@@ -682,6 +682,14 @@ body.has-cursor .cursor { display: block; }
   background-image: repeating-linear-gradient(90deg, transparent 0 63px, #1f27330b 64px 65px);
 }
 .project-dovod .dovod-site { border: 1px solid #1f2733; box-shadow: 12px 12px 0 #1f2733; }
+.project-dovod .dovod-cover {
+  background-image: linear-gradient(90deg,#f4f2ed 0 46%,#f4f2eddd 60%,transparent 82%),url('/assets/dovod-interior.webp');
+  background-size: cover;
+  background-position: center;
+}
+.project-dovod .dovod-cover h3 { max-width: 60%; position: relative; z-index: 1; }
+.project-dovod .dv-facts,.project-dovod .dv-grid { position: relative; z-index: 1; max-width: 68%; }
+.project-dovod .dv-grid > span { background: #f4f2edcc; }
 .project-card[href$="/dovod.html"]:hover .mini-site { transform: translate(-2px,-7px); }
 
 /* Beauty: мягкий градиент, свет и воздушная композиция. */

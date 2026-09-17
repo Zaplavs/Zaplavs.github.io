@@ -221,3 +221,289 @@
   .case-beauty .demo-features{display:grid}
   .case-beauty .demo-features>article,.case-beauty .demo-features>article+article{border-left:0;border-bottom:1px solid #b9c0b0;padding:18px 0}
 }
+
+/* ========================================================================== 
+   Полноценные страницы внутри кейсов
+   ========================================================================== */
+
+/* Forma: портфолио объектов и архитектурный манифест. */
+.forma-selected{background:#161c17;color:#e8e4da;padding:72px 44px}
+.forma-section-head{display:grid;grid-template-columns:1.25fr .75fr;gap:42px;align-items:end;margin-bottom:44px}
+.forma-section-head>span,.forma-method-title>span{font-size:8px;letter-spacing:1.7px;color:#aeb6a7}
+.forma-method-title>span{color:#565e52}
+.forma-section-head h3{font-size:46px;line-height:1.02;font-weight:450;letter-spacing:-2px;margin-top:20px}
+.forma-section-head p{font-size:11px;line-height:1.9;color:#b8beb5;max-width:290px}
+.forma-project-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:14px;align-items:end}
+.forma-project-card{position:relative;margin:0;overflow:hidden;min-height:430px}
+.forma-project-card.is-large{min-height:550px}
+.forma-project-card:after{content:'';position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#0d120ddd)}
+.forma-project-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.68)}
+.forma-project-card>div{position:absolute;z-index:1;left:24px;right:24px;bottom:22px;display:flex;justify-content:space-between;gap:20px;align-items:flex-end}
+.forma-project-card span{font-size:8px;letter-spacing:1.3px}
+.forma-project-card b{font-size:10px;font-weight:500;color:#ccd1c8;text-align:right}
+.forma-method{display:grid;grid-template-columns:.7fr 1.3fr;gap:65px;padding:76px 44px;background:#e8e4da;color:#20251e}
+.forma-method-title h3{font-size:48px;line-height:1.02;font-weight:450;letter-spacing:-2px;margin-top:28px}
+.forma-method ol{list-style:none;padding:0;margin:0}
+.forma-method li{display:grid;grid-template-columns:44px 1fr;gap:18px;border-top:1px solid #9ba18f;padding:21px 0}
+.forma-method li>span{font-size:9px;letter-spacing:1px}
+.forma-method li b{text-transform:uppercase;font-size:13px;letter-spacing:.5px}
+.forma-method li p{font-size:11px;line-height:1.8;color:#565e52;margin-top:7px;max-width:390px}
+.forma-quote{background:#a69d85;color:#20251e;padding:75px 44px 48px}
+.forma-quote p{font-size:44px;line-height:1.08;letter-spacing:-1.8px;max-width:780px}
+.forma-quote span{display:block;font-size:8px;letter-spacing:1.5px;margin-top:34px}
+.forma-signoff{margin:0;padding:25px 44px;background:#161c17;color:#e8e4da;border-top:1px solid #3d463d}
+.forma-signoff>span:first-child{color:#e8e4da}
+
+/* Крошка: настоящее меню, визит и живая бренд-коммуникация. */
+.coffee-ribbon{display:flex;overflow:hidden;background:#783b2b;color:#ffe260;border-block:2px solid #783b2b;padding:13px 0;font-size:11px;font-weight:750;letter-spacing:1.3px;white-space:nowrap}
+.coffee-ribbon span{min-width:100%;text-align:center}
+.coffee-menu{background:#fcf2dc;color:#783b2b;padding:70px 44px}
+.coffee-section-title{display:grid;grid-template-columns:1fr .8fr;gap:20px 44px;align-items:end;margin-bottom:40px}
+.coffee-section-title small,.coffee-good small,.coffee-visit small{grid-column:1/-1;font-size:8px;letter-spacing:1.5px;font-weight:750}
+.coffee-section-title h3{font-size:52px;line-height:.98;letter-spacing:-2.4px}
+.coffee-section-title>span{font-size:11px;line-height:1.8;max-width:300px}
+.coffee-menu-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:start}
+.coffee-menu-list{border-top:2px solid #783b2b}
+.coffee-menu-list article{display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:center;padding:18px 0;border-bottom:1px solid #b9715a}
+.coffee-menu-list article>span{font-size:8px}
+.coffee-menu-list b{font-size:15px;display:block}
+.coffee-menu-list small{display:block;font-size:8px;margin-top:5px;color:#955844}
+.coffee-menu-list strong{font-size:13px;white-space:nowrap}
+.coffee-menu figure{margin:0;transform:rotate(1.2deg)}
+.coffee-menu figure img{width:100%;aspect-ratio:1.25;object-fit:cover;border:2px solid #783b2b;border-radius:90px 18px 18px 18px;box-shadow:7px 7px 0 #ffe260}
+.coffee-menu figcaption{font-size:8px;text-align:right;margin-top:10px;font-weight:650}
+.coffee-good{position:relative;display:grid;grid-template-columns:1fr .8fr;gap:50px;background:#b83f28;color:#fff1cf;padding:72px 44px;overflow:hidden}
+.coffee-good h3{font-size:58px;line-height:.92;letter-spacing:-3px;margin-top:25px}
+.coffee-good>p{font-size:13px;line-height:1.8;align-self:end;max-width:330px}
+.coffee-good-sticker{position:absolute;right:35px;top:30px;width:90px;height:90px;border-radius:50%;background:#ffe260;color:#783b2b;border:2px solid #783b2b;display:grid;place-content:center;text-align:center;font-size:8px;font-weight:800;line-height:1.35;transform:rotate(9deg)}
+.coffee-visit{display:grid;grid-template-columns:1.2fr .8fr 100px;gap:34px;align-items:end;background:#ffe6a5;color:#783b2b;padding:68px 44px}
+.coffee-visit h3{font-size:40px;line-height:1.07;letter-spacing:-1.8px;margin-top:24px}
+.coffee-address{display:flex;flex-direction:column;align-items:flex-start;gap:13px;font-size:10px;line-height:1.65}
+.coffee-address b{font-size:15px}
+.coffee-address a{font-weight:700;border-bottom:1px solid currentColor;padding-bottom:4px}
+.coffee-cup{font-size:70px;transform:rotate(-8deg)}
+.coffee-signoff{margin:0;padding:24px 44px;border-top:2px solid #783b2b;background:#fcf2dc;color:#783b2b}
+.coffee-signoff>span:first-child{color:#783b2b}
+
+/* Тише: ритуалы, редакционная история и запись. */
+.beauty-rituals{background:#eef0e8;color:#566348;padding:76px 44px}
+.beauty-rituals-head{display:grid;grid-template-columns:1.2fr .8fr;gap:26px 50px;align-items:end}
+.beauty-rituals-head small,.beauty-editorial-copy small,.beauty-book small{grid-column:1/-1;font-size:8px;letter-spacing:1.7px}
+.beauty-rituals-head h3{font:42px/1.08 Georgia,serif;letter-spacing:-1px}
+.beauty-rituals-head h3 em{font-weight:400}
+.beauty-rituals-head p{font-size:11px;line-height:1.9;max-width:320px}
+.beauty-ritual-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:55px;border-block:1px solid #b9c0b0}
+.beauty-ritual-grid article{padding:26px 24px 28px 0;min-height:220px;display:flex;flex-direction:column}
+.beauty-ritual-grid article+article{border-left:1px solid #b9c0b0;padding-left:24px}
+.beauty-ritual-grid article>span{font:italic 20px Georgia,serif}
+.beauty-ritual-grid h4{font:30px Georgia,serif;margin:25px 0 12px;font-weight:400}
+.beauty-ritual-grid p{font-size:10px;line-height:1.8;max-width:230px}
+.beauty-ritual-grid b{font-size:8px;font-weight:500;margin-top:auto;padding-top:22px}
+.beauty-editorial{display:grid;grid-template-columns:1.08fr .92fr;background:#f8f5ec;color:#566348}
+.beauty-editorial-image{position:relative;min-height:570px;overflow:hidden}
+.beauty-editorial-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.beauty-editorial-image span{position:absolute;left:22px;bottom:20px;background:#f8f5eceb;padding:10px 13px;font-size:7px;letter-spacing:1.4px}
+.beauty-editorial-copy{padding:70px 45px;align-self:center}
+.beauty-editorial-copy h3{font:42px/1.08 Georgia,serif;letter-spacing:-1.2px;margin-top:30px}
+.beauty-editorial-copy h3 em{font-weight:400}
+.beauty-editorial-copy>p{font-size:11px;line-height:1.9;margin-top:24px}
+.beauty-editorial-copy ul{list-style:none;margin:30px 0 0;padding:0;border-top:1px solid #c9cfc2}
+.beauty-editorial-copy li{font-size:9px;padding:14px 0;border-bottom:1px solid #c9cfc2;display:flex;gap:10px}
+.beauty-editorial-copy li:before{content:'—'}
+.beauty-voices{background:#626e53;color:#f8f5ec;text-align:center;padding:90px 50px}
+.beauty-voices blockquote{font:italic 38px/1.25 Georgia,serif;max-width:680px;margin:0 auto}
+.beauty-voices>span{display:block;font-size:8px;letter-spacing:1.5px;margin-top:28px}
+.beauty-book{display:grid;grid-template-columns:1fr 1fr;gap:38px;background:#d8d0bb;color:#435039;padding:70px 44px;align-items:end}
+.beauty-book h3{font:42px/1.08 Georgia,serif;margin-top:25px;font-weight:400}
+.beauty-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;grid-column:1/-1}
+.beauty-slots span{border:1px solid #9fa793;padding:14px;font-size:8px;display:flex;justify-content:space-between;gap:8px}
+.beauty-book>a{justify-self:end;background:#566348;color:#fff;padding:15px 22px;font-size:9px}
+.beauty-signoff{margin:0;padding:24px 44px;background:#f8f5ec;color:#566348;border-top:1px solid #c9cfc2}
+.beauty-signoff>span:first-child{color:#566348;font-family:Georgia,serif}
+
+/* Поток: рабочее пространство, CRM и отчётность. */
+.potok-workspace,.potok-clients{padding:52px 40px 0;background:#16171a}
+.potok-section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:22px;margin-bottom:24px}
+.potok-section-head h3{font-size:30px;font-weight:500;letter-spacing:-1.2px;margin-top:10px}
+.potok-section-head>span{font-size:9px;color:#8a909a}
+.potok-kanban{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.potok-kanban>section{background:#1b1d21;border:1px solid #292c32;border-radius:10px;padding:14px}
+.potok-kanban header{display:flex;justify-content:space-between;font-size:10px;padding-bottom:12px;border-bottom:1px solid #292c32}
+.potok-kanban header>span{color:#8a909a}
+.potok-kanban article{position:relative;background:#202329;border:1px solid #30343b;border-radius:8px;padding:14px;margin-top:10px;min-height:112px;display:flex;flex-direction:column;align-items:flex-start}
+.potok-kanban article.is-active{border-color:#647632}
+.potok-kanban small{font-size:7px;color:#999fa8}
+.potok-kanban strong{font-size:11px;margin-top:9px}
+.potok-kanban article>span{font-size:8px;color:#9ca1aa;margin-top:5px}
+.potok-kanban article>em{font-size:8px;font-style:normal;color:#d4f26a;margin-top:auto}
+.potok-kanban article>em.is-paid{color:#8bb179}
+.potok-progress{height:4px;background:#30343b;width:100%;margin-top:auto;border-radius:4px;overflow:hidden}
+.potok-progress i{display:block;height:100%;background:#d4f26a;border-radius:inherit}
+.potok-action.is-ghost{background:transparent;color:#d4f26a;border:1px solid #48532a}
+.potok-table{border:1px solid #292c32;border-radius:10px;overflow:hidden}
+.potok-table-row{display:grid;grid-template-columns:1.2fr 1fr .75fr .6fr;gap:14px;align-items:center;padding:14px 16px;border-bottom:1px solid #292c32;font-size:9px}
+.potok-table-row:last-child{border-bottom:0}
+.potok-table-row.is-head{background:#1b1d21;color:#989ea7;font-size:8px}
+.potok-table-row>span:first-child{display:flex;align-items:center;gap:10px}
+.potok-table-row i{width:28px;height:28px;border-radius:50%;background:#292d33;display:grid;place-items:center;font-size:7px;font-style:normal;color:#d4f26a}
+.potok-table-row b{font-size:9px}
+.potok-table-row b small{display:block;font-size:7px;color:#969ca5;margin-top:3px;font-weight:400}
+.potok-table-row em{font-style:normal;border-radius:20px;padding:5px 8px;font-size:7px}
+.status-new{color:#f2c46a;background:#f2c46a15}
+.status-run{color:#d4f26a;background:#d4f26a15}
+.status-done{color:#8bb179;background:#8bb17915}
+.potok-table-row>strong{text-align:right;font-size:9px}
+.potok-summary{display:grid;grid-template-columns:1fr .65fr 1fr;gap:36px;align-items:center;margin:52px 40px 0;padding:35px;border:1px solid #48532a;background:#1e2318;border-radius:12px}
+.potok-summary h3{font-size:30px;color:#d4f26a;font-weight:500;margin-top:12px}
+.potok-summary p{font-size:9px;color:#9ca1aa;line-height:1.7;margin-top:8px}
+.potok-ring{width:126px;height:126px;border-radius:50%;background:conic-gradient(#d4f26a 0 92%,#343a2d 92%);display:grid;place-items:center;justify-self:center;position:relative}
+.potok-ring:before{content:'';position:absolute;inset:9px;border-radius:50%;background:#1e2318}
+.potok-ring span{position:relative;text-align:center;font-size:8px;color:#9ca1aa;line-height:1.4}
+.potok-ring b{font-size:22px;color:#e8e9ec;display:block}
+.potok-summary ul{list-style:none;padding:0;margin:0}
+.potok-summary li{display:flex;justify-content:space-between;gap:15px;padding:11px 0;border-bottom:1px solid #363c30;font-size:9px;color:#9ca1aa}
+.potok-summary li b{color:#e8e9ec}
+.potok-signoff{margin:42px 40px 0;padding:24px 0;border-top:1px solid #292c32;color:#8a909a}
+
+/* Довод: редакционная юридическая практика с кейсами и публикациями. */
+.case-dovod .demo-shell{border-radius:0;box-shadow:14px 14px 0 #9a7b4f}
+.case-dovod .demo-toolbar{background:#1f2733;color:#c4cad2}
+.case-dovod .demo-toolbar .browser-dots i{background:#637080}
+.case-dovod .demo-nav{padding-inline:36px}
+.case-dovod .dovod-hero{display:grid;grid-template-columns:1fr 1fr;padding:0;border-bottom:1px solid #d9d5cc;min-height:530px}
+.dovod-hero-copy{padding:65px 44px;align-self:center}
+.dovod-hero figure{margin:0;position:relative;min-height:530px;overflow:hidden}
+.dovod-hero figure:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#1f273388,transparent 50%)}
+.dovod-hero figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.5) contrast(1.02)}
+.dovod-hero figcaption{position:absolute;left:22px;bottom:18px;z-index:1;color:#fff;font-size:7px;letter-spacing:1.1px}
+.case-dovod .dovod-hero h3{font-size:49px}
+.case-dovod .dovod-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:0;border-bottom:1px solid #d9d5cc}
+.case-dovod .dovod-facts>div{padding:28px 34px;border-right:1px solid #d9d5cc}
+.case-dovod .dovod-facts>div:last-child{border-right:0}
+.dovod-case{display:grid;grid-template-columns:.75fr .75fr 1.2fr;background:#6f5535;color:#f4f2ed}
+.dovod-case>div{padding:42px 34px;border-right:1px solid #ffffff38}
+.dovod-case>div:last-child{border-right:0}
+.dovod-case-index span,.dovod-case-result small{font-size:8px;letter-spacing:1.5px;display:block}
+.dovod-case-index b{font:24px Georgia,serif;font-weight:400;display:block;margin-top:28px}
+.dovod-case-result strong{font:38px Georgia,serif;display:block;margin-top:20px}
+.dovod-case-result>span{font-size:9px;line-height:1.7;display:block;margin-top:10px}
+.dovod-case-story p{font:18px/1.5 Georgia,serif}
+.dovod-case-story a{display:inline-block;font-size:9px;border-bottom:1px solid currentColor;padding-bottom:5px;margin-top:28px}
+.dovod-process{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;padding:72px 44px;background:#f4f2ed;color:#1f2733}
+.dovod-process>div>span,.dovod-publications-title>span{font-size:8px;letter-spacing:1.6px;color:#7a5f37}
+.dovod-process h3,.dovod-publications h3{font:40px/1.08 Georgia,serif;font-weight:400;margin-top:25px}
+.dovod-process ol{list-style:none;margin:0;padding:0}
+.dovod-process li{display:grid;grid-template-columns:35px 130px 1fr;gap:14px;border-top:1px solid #d1ccc2;padding:18px 0}
+.dovod-process li>span{font-size:8px;color:#7a5f37}
+.dovod-process li b{font:17px Georgia,serif;font-weight:400}
+.dovod-process li p{font-size:10px;line-height:1.75;color:#4a5361}
+.dovod-publications{display:grid;grid-template-columns:.72fr 1.28fr;gap:62px;padding:72px 44px;background:#f4f2ed;color:#1f2733}
+.dovod-publications article{display:grid;grid-template-columns:130px 1fr 22px;gap:18px;align-items:center;border-top:1px solid #d1ccc2;padding:22px 0}
+.dovod-publications article:last-child{border-bottom:1px solid #d1ccc2}
+.dovod-publications article span{font-size:7px;letter-spacing:.7px;color:#7a5f37}
+.dovod-publications article b{font:17px Georgia,serif;font-weight:400}
+.dovod-publications article i{font-style:normal;font-size:17px}
+.dovod-contact{background:#1f2733;color:#f4f2ed;padding:72px 44px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:30px}
+.dovod-contact>span{grid-column:1/-1;font-size:8px;letter-spacing:1.6px;color:#b3bcc9}
+.dovod-contact h3{font:54px Georgia,serif;font-weight:400}
+.dovod-contact a{font-size:10px;border:1px solid #f4f2ed;padding:15px 20px}
+.dovod-signoff{margin:0;padding:24px 44px;background:#f4f2ed;color:#4a5361;border-top:1px solid #d9d5cc}
+
+@media(max-width:900px){
+  .forma-section-head h3,.forma-method-title h3,.coffee-section-title h3,.coffee-good h3{font-size:38px}
+  .forma-project-card.is-large{min-height:470px}
+  .forma-project-card{min-height:370px}
+  .coffee-good-sticker{width:72px;height:72px;right:22px}
+  .beauty-editorial-image{min-height:500px}
+  .potok-kanban{grid-template-columns:1fr 1fr}
+  .potok-kanban>section:last-child{grid-column:1/-1}
+  .potok-summary{grid-template-columns:1fr .7fr}
+  .potok-summary ul{grid-column:1/-1}
+  .case-dovod .dovod-hero{grid-template-columns:1fr .85fr}
+  .dovod-hero-copy{padding:48px 30px}
+  .case-dovod .dovod-hero h3{font-size:39px}
+  .dovod-process,.dovod-publications{gap:36px;padding-inline:30px}
+}
+
+@media(max-width:650px){
+  .forma-selected,.forma-method,.forma-quote{padding:42px 20px}
+  .forma-section-head,.forma-method{grid-template-columns:1fr;gap:28px}
+  .forma-section-head h3,.forma-method-title h3{font-size:32px}
+  .forma-project-grid{grid-template-columns:1fr}
+  .forma-project-card.is-large,.forma-project-card{min-height:340px}
+  .forma-quote p{font-size:29px}
+  .forma-signoff{padding:20px;flex-wrap:wrap;gap:10px}
+  .forma-signoff>span:nth-child(2){display:none}
+
+  .coffee-ribbon{font-size:8px}
+  .coffee-menu,.coffee-good,.coffee-visit{padding:42px 20px}
+  .coffee-section-title,.coffee-good{grid-template-columns:1fr}
+  .coffee-section-title h3,.coffee-good h3{font-size:38px}
+  .coffee-menu-grid{grid-template-columns:1fr;gap:34px}
+  .coffee-menu figure img{aspect-ratio:1;border-radius:70px 14px 14px 14px}
+  .coffee-good-sticker{width:64px;height:64px;font-size:6px;right:14px;top:18px}
+  .coffee-good>p{font-size:11px}
+  .coffee-visit{grid-template-columns:1fr}
+  .coffee-visit h3{font-size:31px}
+  .coffee-cup{display:none}
+  .coffee-signoff{padding:20px;gap:10px;flex-wrap:wrap}
+  .coffee-signoff>span:nth-child(2){display:none}
+
+  .beauty-rituals{padding:45px 22px}
+  .beauty-rituals-head{grid-template-columns:1fr}
+  .beauty-rituals-head h3{font-size:31px}
+  .beauty-ritual-grid{grid-template-columns:1fr;margin-top:38px}
+  .beauty-ritual-grid article,.beauty-ritual-grid article+article{min-height:0;border-left:0;border-bottom:1px solid #b9c0b0;padding:24px 0}
+  .beauty-ritual-grid article:last-child{border-bottom:0}
+  .beauty-ritual-grid b{margin-top:18px}
+  .beauty-editorial{grid-template-columns:1fr}
+  .beauty-editorial-image{min-height:340px}
+  .beauty-editorial-copy{padding:44px 22px}
+  .beauty-editorial-copy h3{font-size:32px}
+  .beauty-voices{padding:58px 22px}
+  .beauty-voices blockquote{font-size:27px}
+  .beauty-book{grid-template-columns:1fr;padding:44px 22px}
+  .beauty-book h3{font-size:32px}
+  .beauty-slots{grid-template-columns:1fr}
+  .beauty-book>a{justify-self:start}
+  .beauty-signoff{padding:20px 22px;gap:10px;flex-wrap:wrap}
+  .beauty-signoff>span:nth-child(2){display:none}
+
+  .potok-workspace,.potok-clients{padding:38px 16px 0}
+  .potok-section-head{display:block}
+  .potok-section-head h3{font-size:24px}
+  .potok-section-head>span{display:inline-block;margin-top:12px}
+  .potok-kanban{grid-template-columns:1fr}
+  .potok-kanban>section:last-child{grid-column:auto}
+  .potok-table-row{grid-template-columns:1.2fr .8fr .6fr;padding:12px 10px;gap:8px}
+  .potok-table-row>span:nth-child(2){display:none}
+  .potok-table-row.is-head>span:nth-child(2){display:none}
+  .potok-summary{grid-template-columns:1fr;margin:38px 16px 0;padding:24px}
+  .potok-ring{justify-self:start}
+  .potok-summary ul{grid-column:auto}
+  .potok-signoff{margin:32px 16px 0;gap:10px;flex-wrap:wrap}
+  .potok-signoff>span:nth-child(2){display:none}
+
+  .case-dovod .demo-shell{box-shadow:7px 7px 0 #9a7b4f}
+  .case-dovod .dovod-hero{grid-template-columns:1fr;min-height:0}
+  .dovod-hero-copy{padding:42px 22px}
+  .case-dovod .dovod-hero h3{font-size:34px}
+  .dovod-hero figure{min-height:330px}
+  .case-dovod .dovod-facts{grid-template-columns:1fr 1fr}
+  .case-dovod .dovod-facts>div{padding:20px;border-bottom:1px solid #d9d5cc}
+  .case-dovod .dovod-facts>div:nth-child(2){border-right:0}
+  .dovod-practices{grid-template-columns:1fr}
+  .dovod-case{grid-template-columns:1fr}
+  .dovod-case>div{padding:30px 22px;border-right:0;border-bottom:1px solid #ffffff38}
+  .dovod-process,.dovod-publications{grid-template-columns:1fr;gap:30px;padding:45px 22px}
+  .dovod-process h3,.dovod-publications h3{font-size:32px}
+  .dovod-process li{grid-template-columns:28px 1fr}
+  .dovod-process li p{grid-column:2}
+  .dovod-publications article{grid-template-columns:1fr 20px}
+  .dovod-publications article span{grid-column:1/-1}
+  .dovod-contact{grid-template-columns:1fr;padding:48px 22px}
+  .dovod-contact h3{font-size:39px}
+  .dovod-contact a{justify-self:start}
+  .dovod-signoff{padding:20px 22px;gap:10px;flex-wrap:wrap}
+  .dovod-signoff>span:nth-child(2){display:none}
+}

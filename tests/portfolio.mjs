@@ -110,6 +110,18 @@ try {
   const alts = await page.locator('.work-frame img').evaluateAll(list => list.map(i => i.alt));
   assert.ok(alts.every(a => a && a.length > 10), 'У превью осмысленное описание');
 
+  // Макет «стало» не должен вылезать за сцену сравнения ни на одной ширине.
+  for (const width of [1440, 1024, 768, 600, 390]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.waitForTimeout(250);
+    const spill = await page.evaluate(() => {
+      const stage = document.querySelector('.compare-panel:not([hidden]) .compare-stage');
+      return stage.querySelector('.new-site').scrollHeight - stage.clientHeight;
+    });
+    assert.ok(spill <= 1, `Макет «стало» умещается в сцену на ${width}px (вылет ${spill}px)`);
+  }
+  await page.setViewportSize({ width: 1440, height: 1000 });
+
   // Вкладки «было / стало»: ровно одна панель открыта, стрелки переключают.
   const tabs = page.locator('.compare-tab');
   assert.equal(await tabs.count(), 3, 'Три примера редизайна');

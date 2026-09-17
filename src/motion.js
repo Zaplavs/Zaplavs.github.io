@@ -217,6 +217,53 @@ if (marqueeRows.length) {
 }
 
 /* --------------------------------------------------------------------------
+   Просмотр работы целиком. Тяжёлый снимок грузится только по клику.
+   -------------------------------------------------------------------------- */
+const lightbox = document.querySelector('#lightbox');
+if (lightbox && typeof lightbox.showModal === 'function') {
+  const zooms = [...document.querySelectorAll('.work-zoom')];
+  const body = lightbox.querySelector('.lightbox-body');
+  const title = lightbox.querySelector('.lightbox-title');
+  const sub = lightbox.querySelector('.lightbox-sub');
+  const count = lightbox.querySelector('.lb-count');
+  let index = 0;
+
+  const show = position => {
+    index = (position + zooms.length) % zooms.length;
+    const source = zooms[index];
+    const image = document.createElement('img');
+    image.src = `/assets/works/${source.dataset.slug}-full.jpg`;
+    image.alt = `Сайт «${source.dataset.title}» целиком`;
+    body.replaceChildren(image);
+    body.scrollTop = 0;
+    title.textContent = source.dataset.title;
+    sub.textContent = source.dataset.sub;
+    count.textContent = `${index + 1} / ${zooms.length}`;
+  };
+
+  zooms.forEach((button, position) => {
+    button.addEventListener('click', () => {
+      show(position);
+      lightbox.showModal();
+    });
+  });
+
+  lightbox.querySelector('.lb-prev')?.addEventListener('click', () => show(index - 1));
+  lightbox.querySelector('.lb-next')?.addEventListener('click', () => show(index + 1));
+  lightbox.querySelector('.lb-close')?.addEventListener('click', () => lightbox.close());
+  lightbox.addEventListener('click', event => { if (event.target === lightbox) lightbox.close(); });
+  lightbox.addEventListener('keydown', event => {
+    if (event.key === 'ArrowRight') { event.preventDefault(); show(index + 1); }
+    if (event.key === 'ArrowLeft') { event.preventDefault(); show(index - 1); }
+  });
+  // после закрытия возвращаем фокус на карточку, с которой открыли
+  lightbox.addEventListener('close', () => {
+    body.replaceChildren();
+    zooms[index]?.focus();
+  });
+}
+
+/* --------------------------------------------------------------------------
    Счётчики.
    -------------------------------------------------------------------------- */
 const counters = [...document.querySelectorAll('[data-count]')];

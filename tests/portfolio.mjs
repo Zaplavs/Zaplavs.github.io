@@ -110,31 +110,51 @@ try {
   const alts = await page.locator('.work-frame img').evaluateAll(list => list.map(i => i.alt));
   assert.ok(alts.every(a => a && a.length > 10), 'У превью осмысленное описание');
 
-  // Макет «стало» не должен вылезать за сцену сравнения ни на одной ширине.
-  for (const width of [1440, 1024, 768, 600, 390]) {
-    await page.setViewportSize({ width, height: 1000 });
-    await page.waitForTimeout(250);
-    const spill = await page.evaluate(() => {
-      const stage = document.querySelector('.compare-panel:not([hidden]) .compare-stage');
-      return stage.querySelector('.new-site').scrollHeight - stage.clientHeight;
-    });
-    assert.ok(spill <= 1, `Макет «стало» умещается в сцену на ${width}px (вылет ${spill}px)`);
-  }
-  await page.setViewportSize({ width: 1440, height: 1000 });
+  // Просмотр работы целиком.
+  assert.equal(await page.locator('.work-zoom').count(), 5, 'У каждой работы есть кнопка просмотра');
+  const lightbox = page.locator('#lightbox');
+  assert.equal(await page.locator('#lightbox img').count(), 0, 'Тяжёлый снимок не грузится до открытия');
+  await page.locator('.work-zoom').first().click();
+  assert.ok(await lightbox.evaluate(node => node.open), 'Просмотр открывается по клику');
+  const shot = page.locator('.lightbox-body img');
+  await shot.evaluate(i => i.complete || new Promise(r => { i.onload = r; i.onerror = r; }));
+  assert.ok(await shot.evaluate(i => i.complete && i.naturalWidth > 0), 'Полный снимок загрузился');
+  assert.ok(await shot.evaluate(i => i.naturalHeight > i.naturalWidth * 2), 'Это снимок всей страницы, а не первого экрана');
+  const first = await page.locator('.lightbox-title').textContent();
+  assert.equal(await page.locator('.lb-count').textContent(), '1 / 5');
+  await page.keyboard.press('ArrowRight');
+  assert.notEqual(await page.locator('.lightbox-title').textContent(), first, 'Стрелка листает работы');
+  assert.equal(await page.locator('.lb-count').textContent(), '2 / 5');
+  await page.keyboard.press('Escape');
+  // событие close у <dialog> приходит отдельной задачей, поэтому ждём, а не проверяем сразу
+  await page.waitForFunction(() => {
+    const node = document.querySelector('#lightbox');
+    return !node.open && node.querySelectorAll('img').length === 0;
+  }, null, { timeout: 5000 });
+  assert.equal(await page.evaluate(() => document.activeElement.className), 'work-zoom', 'Фокус возвращается на карточку');
 
-  // Вкладки «было / стало»: ровно одна панель открыта, стрелки переключают.
+  // Справа — скриншоты реальных работ, по одному на вкладку.
+  for (const key of ['garage', 'salon', 'spa']) {
+    await page.locator(`#tab-${key}`).click();
+    const shot = page.locator('.compare-panel:not([hidden]) .compare-shot');
+    assert.equal(await shot.count(), 1, `У вкладки ${key} есть скриншот работы`);
+    assert.ok(await shot.evaluate(i => i.complete && i.naturalWidth > 0), `Скриншот ${key} загрузился`);
+    assert.ok((await shot.getAttribute('alt')).length > 20, `У скриншота ${key} осмысленное описание`);
+  }
+
+  // Вкладки сравнения: ровно одна панель открыта, стрелки переключают.
   const tabs = page.locator('.compare-tab');
   assert.equal(await tabs.count(), 3, 'Три примера редизайна');
-  for (const key of ['dental', 'garage', 'build']) {
+  for (const key of ['salon', 'spa', 'garage']) {
     await page.locator(`#tab-${key}`).click();
     assert.equal(await page.locator('.compare-panel:not([hidden])').count(), 1, 'Открыта одна панель');
     assert.equal(await page.locator('.compare-panel:not([hidden])').getAttribute('id'), `panel-${key}`);
   }
-  await page.locator('#tab-build').focus();
+  await page.locator('#tab-garage').focus();
   await page.keyboard.press('ArrowRight');
-  assert.equal(await page.evaluate(() => document.activeElement.id), 'tab-dental', 'Стрелки переключают вкладки');
+  assert.equal(await page.evaluate(() => document.activeElement.id), 'tab-salon', 'Стрелки переключают вкладки');
   await page.keyboard.press('Home');
-  assert.equal(await page.evaluate(() => document.activeElement.id), 'tab-build');
+  assert.equal(await page.evaluate(() => document.activeElement.id), 'tab-garage');
 
   // Цена названа прямо и согласована между секциями.
   assert.ok((await page.locator('.price-figure').textContent()).replace(/\s/g, '').includes('3000₽'), 'Стартовая цена видна');
@@ -173,7 +193,7 @@ try {
   await page.evaluate(() => sessionStorage.clear());
   await page.goto(base);
   await page.waitForSelector('.preloader', { state: 'detached', timeout: 15000 });
-  console.log('Verified interactive layer: works grid, compare tabs and slider, price block, command palette, accent, marquee.');
+  console.log('Verified interactive layer: works grid with zoom, compare tabs and slider, price block, command palette, accent, marquee.');
 
   await fs.writeFile('test-results/accessibility.json', JSON.stringify(accessibility, null, 2));
   assert.deepEqual(errors, [], 'No browser errors or missing assets');

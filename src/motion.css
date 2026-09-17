@@ -221,81 +221,8 @@ body.has-cursor .cursor { display: block; }
 .old-blink { color: #a30000; font-weight: 700; font-size: 12px; }
 .old-footer { position: absolute; bottom: 0; left: 0; right: 0; background: #dfe6f2; border-top: 2px solid #9fb5d6; padding: 9px 20px; font-size: 10px; color: #333; display: flex; justify-content: space-between; gap: 10px; }
 
-/* Обновлённый макет «стало»: плотная страница, а не один экран с пустотой. */
-.new-site {
-  position: absolute; inset: 0; background: #f8f8f3; color: #1d1f1a;
-  display: grid; grid-template-rows: auto minmax(0, 1fr) auto auto;
-}
-.new-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 0 30px; height: 15%; min-height: 52px; border-bottom: 1px solid #e3e4da; }
-.new-top b { font-size: 22px; letter-spacing: -1.1px; font-weight: 700; }
-.new-top .new-nav { display: flex; gap: 22px; font-size: 10px; font-weight: 600; color: #5c6155; }
-.new-top em { font-style: normal; font-size: 10px; font-weight: 700; border: 1px solid #1d1f1a; padding: 9px 14px; border-radius: 5px; white-space: nowrap; }
-
-.new-body { display: grid; grid-template-columns: 1.06fr .94fr; gap: 30px; padding: 4% 30px; align-items: stretch; min-height: 0; }
-.new-copy { min-width: 0; display: flex; flex-direction: column; }
-.new-copy small { font-size: 8.5px; letter-spacing: 1.7px; font-weight: 700; color: #5c6155; display: block; }
-.new-copy h3 { font-size: clamp(28px, 4vw, 52px); line-height: 1.02; letter-spacing: -2.4px; font-weight: 500; margin: 3% 0; }
-.new-copy > p { font-size: 12px; line-height: 1.75; color: #53584d; max-width: 330px; }
-.new-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 5%; }
-.new-cta { display: inline-flex; align-items: center; gap: 16px; background: #1d1f1a; color: #fff; font-size: 10.5px; font-weight: 650; padding: 14px 20px; border-radius: 5px; white-space: nowrap; }
-.new-proof { font-size: 10px; font-weight: 650; color: #53584d; white-space: nowrap; }
-.new-facts { display: flex; gap: 30px; flex-wrap: wrap; margin-top: auto; padding-top: 5%; border-top: 1px solid #e3e4da; }
-.new-facts b { font-size: 24px; font-weight: 550; letter-spacing: -1.2px; display: block; line-height: 1; }
-.new-facts span { font-size: 8.5px; line-height: 1.4; color: #53584d; display: block; margin-top: 7px; max-width: 92px; }
-
-.new-side { min-width: 0; display: grid; align-items: center; min-height: 0; }
-.new-visual { position: relative; height: 100%; border-radius: 10px; overflow: hidden; background: #e3edc9; }
-.new-visual img { width: 100%; height: 100%; object-fit: cover; }
-.new-badge { position: absolute; left: 14px; bottom: 14px; background: #fff; border-radius: 6px; padding: 10px 13px; font-size: 8.5px; line-height: 1.5; color: #53584d; box-shadow: 0 8px 20px #00000024; }
-.new-badge b { display: block; font-size: 10px; color: #1d1f1a; margin-bottom: 3px; }
-
-.new-panel { border: 1px solid #e3e4da; border-radius: 10px; padding: 20px 22px; background: #fff; }
-.np-title { font-size: 8px; letter-spacing: 1.6px; font-weight: 700; color: #5c6155; }
-.np-row { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 11px 0; border-bottom: 1px solid #eceee5; font-size: 11px; }
-.np-row:first-of-type { margin-top: 10px; }
-.np-row b { font-weight: 600; }
-.np-row > span { font-weight: 650; white-space: nowrap; color: #2f6f62; }
-.np-row.is-busy > span { color: #6b7067; }
-.np-note { font-size: 9px; line-height: 1.6; color: #5c6155; margin-top: 13px; }
-
-.new-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid #e3e4da; }
-.new-cards > article { padding: 3.5% 30px; border-right: 1px solid #e3e4da; min-width: 0; }
-.new-cards > article:last-child { border-right: 0; }
-.new-cards > article:not(:first-child) { padding-left: 22px; }
-.new-cards > article > span { font-size: 8.5px; letter-spacing: 1.4px; font-weight: 700; color: #6b7067; }
-.new-cards > article > b { display: block; font-size: 12.5px; font-weight: 600; letter-spacing: -.2px; margin: 9px 0 6px; }
-.new-cards > article > em { font-style: normal; font-size: 10.5px; font-weight: 650; color: #53584d; }
-.new-cards.is-people > article > span {
-  display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
-  background: #e6efe9; color: #2f6f62; font-size: 9px; letter-spacing: .4px;
-}
-
-.new-strip { display: flex; justify-content: space-between; gap: 14px; padding: 14px 30px; border-top: 1px solid #e3e4da; font-size: 8.5px; letter-spacing: 1.3px; color: #53584d; }
-
-/* Стоматология: светлый бирюзовый. */
-.new-site.is-dental { background: #f5f8f6; }
-.is-dental .new-top, .is-dental .new-strip, .is-dental .new-cards,
-.is-dental .new-cards > article, .is-dental .new-facts { border-color: #dde7e2; }
-.is-dental .new-cta { background: #1d4f47; }
-.is-dental .new-top em { border-color: #1d4f47; color: #1d4f47; }
-.is-dental .new-panel { border-color: #dde7e2; }
-.is-dental .np-row { border-bottom-color: #e8efeb; }
-
-/* Автосервис: тёмная тема. */
-.new-site.is-garage { background: #191b1e; color: #f2f3f4; }
-.is-garage .new-top, .is-garage .new-strip, .is-garage .new-cards,
-.is-garage .new-cards > article, .is-garage .new-facts { border-color: #2c3034; }
-.is-garage .new-nav, .is-garage .new-copy small, .is-garage .new-copy > p,
-.is-garage .new-strip, .is-garage .new-proof, .is-garage .new-facts span { color: #a5abb2; }
-.is-garage .new-top em { border-color: #f2f3f4; color: #f2f3f4; }
-.is-garage .new-cta { background: #ff8a3d; color: #191b1e; }
-.is-garage .new-panel { background: #22262a; border-color: #32373c; }
-.is-garage .np-title, .is-garage .np-note { color: #a5abb2; }
-.is-garage .np-row { border-bottom-color: #32373c; }
-.is-garage .np-row > span { color: #ffab73; }
-.is-garage .np-row.is-busy > span { color: #8b9198; }
-.is-garage .new-cards > article > span { color: #8b9198; }
-.is-garage .new-cards > article > em { color: #a5abb2; }
+/* Справа — скриншот реальной работы. */
+.compare-shot { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 
 /* --------------------------------------------------------------------------
    8. Стоимость
@@ -419,13 +346,6 @@ body.has-cursor .cursor { display: block; }
   .stats { grid-template-columns: 1fr 1fr; gap: 26px 20px; padding: 40px 0; }
   .compare-stage { min-height: 320px; aspect-ratio: 4 / 3; }
   /* Ниже 800 px в сцену сравнения помещается только первый экран. */
-  .new-site { grid-template-rows: auto minmax(0, 1fr) auto; }
-  .new-cards { display: none; }
-  .new-body { grid-template-columns: 1fr; gap: 14px; padding: 20px; }
-  .new-side { display: none; }
-  .new-top, .new-strip { padding-inline: 20px; }
-  .new-copy h3 { font-size: 34px; letter-spacing: -1.6px; }
-  .new-facts { gap: 22px; padding-top: 16px; }
   .price-includes { grid-template-columns: 1fr 1fr; gap: 22px 26px; }
   .marquee-row > span { font-size: 20px; gap: 18px; padding-right: 18px; }
   .marquee { padding: 18px 0; }
@@ -443,25 +363,6 @@ body.has-cursor .cursor { display: block; }
   .old-body h4 { font-size: 14px; margin-top: 12px; }
   .old-body h3 { font-size: 18px; }
   .old-body p { font-size: 11px; }
-  /* На телефоне макету хватает шапки, первого экрана и полосы фактов. */
-  .new-site { grid-template-rows: auto minmax(0, 1fr) auto; }
-  .new-cards { display: none; }
-  .new-top { padding-inline: 16px; }
-  .new-top .new-nav { display: none; }
-  .new-top b { font-size: 17px; }
-  .new-top em { font-size: 8.5px; padding: 7px 10px; }
-  .new-body { padding: 16px; }
-  .new-copy > p { display: none; }
-  .new-copy h3 { font-size: 26px; letter-spacing: -1.2px; margin: 10px 0; }
-  .new-copy small { font-size: 7px; letter-spacing: 1.2px; }
-  .new-actions { margin-top: 16px; gap: 12px; }
-  .new-cta { font-size: 9px; padding: 11px 14px; gap: 10px; }
-  .new-proof { font-size: 8.5px; }
-  .new-facts { margin-top: auto; padding-top: 14px; gap: 18px; }
-  .new-facts b { font-size: 17px; }
-  .new-facts span { font-size: 7.5px; max-width: 72px; margin-top: 5px; }
-  .new-strip { padding: 10px 16px; font-size: 7px; letter-spacing: 1px; }
-  .new-strip > span:nth-child(3) { display: none; }
   .price-includes { grid-template-columns: 1fr; }
   .price-main, .price-includes { padding: 28px 24px; }
   .price-figure { letter-spacing: -2.5px; gap: 12px; }
@@ -578,41 +479,17 @@ body.has-cursor .cursor { display: block; }
 .old-table td:last-child, .old-table th:last-child { width: 34%; }
 
 /* Панель вместо фотографии в обновлённых макетах. */
-.new-panel { border: 1px solid #e3e4da; border-radius: 8px; padding: 18px 20px; background: #fff; align-self: center; width: 100%; }
-.np-title { font-size: 8px; letter-spacing: 1.5px; font-weight: 700; color: #5c6155; }
-.np-row { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 11px 0; border-bottom: 1px solid #eceee5; font-size: 11px; }
-.np-row:first-of-type { margin-top: 8px; }
-.np-row b { font-weight: 600; }
-.np-row > span { font-weight: 650; white-space: nowrap; color: #2f6f62; }
-.np-note { font-size: 9px; line-height: 1.6; color: #5c6155; margin-top: 12px; }
 
-.new-site.is-dental { background: #f4f7f5; }
-.is-dental .new-top, .is-dental .new-strip { border-color: #dce6e0; }
-.is-dental .new-cta { background: #22564d; }
-.is-dental .new-top em { border-color: #22564d; color: #22564d; }
 
-.new-site.is-garage { background: #1b1d20; color: #f0f1f2; }
-.is-garage .new-top, .is-garage .new-strip { border-color: #2c2f34; }
-.is-garage .new-top nav, .is-garage .new-nav, .is-garage .new-body small, .is-garage .new-strip { color: #a9aeb5; }
-.is-garage .new-body p { color: #a9aeb5; }
-.is-garage .new-top em { border-color: #f0f1f2; color: #f0f1f2; }
-.is-garage .new-cta { background: #ff8a3d; color: #1b1d20; }
-.is-garage .new-panel { background: #24272b; border-color: #32363c; }
-.is-garage .np-title, .is-garage .np-note { color: #a9aeb5; }
-.is-garage .np-row { border-bottom-color: #32363c; }
-.is-garage .np-row > span { color: #ffab73; }
 
 @media (max-width: 1100px) {
   .compare-changes { grid-template-columns: 1fr; gap: 18px; }
 }
 @media (max-width: 800px) {
-  .new-panel { padding: 14px 16px; }
-  .np-row { font-size: 10px; padding: 8px 0; }
   .compare-tab { font-size: 10px; padding: 10px 15px; }
 }
 @media (max-width: 600px) {
   .compare-tabs { margin-top: 26px; }
-  .np-row b { font-size: 9.5px; }
 }
 
 /* --------------------------------------------------------------------------
@@ -653,4 +530,63 @@ body.has-cursor .cursor { display: block; }
   .work-grid { grid-template-columns: 1fr; gap: 34px; }
   .work-shot { padding: 32px 16px 16px; }
   .invite-inner strong { font-size: 18px; }
+}
+
+/* --------------------------------------------------------------------------
+   Просмотр работы целиком
+   -------------------------------------------------------------------------- */
+.work-zoom {
+  display: block; width: 100%; padding: 0; border: 0; background: none;
+  position: relative; text-align: left; cursor: zoom-in;
+}
+.work-zoom-hint {
+  position: absolute; left: 50%; bottom: 14px; transform: translate(-50%, 8px);
+  background: #16171acc; color: #fff; font-size: 10px; font-weight: 650; letter-spacing: .3px;
+  padding: 9px 14px; border-radius: 30px; white-space: nowrap; opacity: 0;
+  transition: opacity .25s, transform .25s var(--ease); pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+.work-zoom:hover .work-zoom-hint,
+.work-zoom:focus-visible .work-zoom-hint { opacity: 1; transform: translate(-50%, 0); }
+
+.lightbox {
+  width: min(1120px, calc(100% - 28px)); max-width: none;
+  height: min(92vh, 1040px); max-height: none;
+  border: 0; padding: 0; border-radius: 14px; overflow: hidden;
+  background: var(--surface); color: var(--ink); box-shadow: 0 40px 90px #00000052;
+}
+.lightbox[open] { display: flex; flex-direction: column; }
+.lightbox::backdrop { background: #0b0b0ce8; backdrop-filter: blur(6px); }
+.lightbox-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 16px 20px; border-bottom: 1px solid var(--line); flex-shrink: 0;
+}
+.lightbox-title { font-size: 18px; font-weight: 600; letter-spacing: -.5px; }
+.lightbox-sub { font-size: 11px; color: var(--muted); margin-top: 5px; }
+.lightbox-nav { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
+.lightbox-nav button {
+  width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line);
+  background: none; display: grid; place-items: center; font-size: 14px;
+  transition: border-color .2s, background .2s;
+}
+.lightbox-nav button:hover { border-color: var(--accent); }
+.lb-count { font-size: 11px; color: var(--muted); min-width: 40px; text-align: center; font-variant-numeric: tabular-nums; }
+.lb-close { margin-left: 8px; }
+.lightbox-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; background: var(--surface-2); }
+.lightbox-body img { display: block; width: 100%; height: auto; }
+.lightbox-foot {
+  display: flex; justify-content: space-between; gap: 14px; flex-shrink: 0;
+  padding: 11px 20px; border-top: 1px solid var(--line); font-size: 9.5px; color: var(--muted);
+}
+@media (max-width: 600px) {
+  .lightbox { width: calc(100% - 16px); height: 94vh; }
+  .lightbox-head { padding: 13px 15px; }
+  .lightbox-title { font-size: 15px; }
+  .lightbox-sub { display: none; }
+  .lightbox-nav button { width: 32px; height: 32px; }
+  .lb-count { min-width: 34px; font-size: 10px; }
+  /* Сайт снят на десктопной ширине: даём возможность двигать его, а не мельчить. */
+  .lightbox-body { overflow: auto; }
+  .lightbox-body img { min-width: 680px; }
+  .lightbox-foot { display: none; }
 }

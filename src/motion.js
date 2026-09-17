@@ -217,20 +217,6 @@ if (marqueeRows.length) {
 }
 
 /* --------------------------------------------------------------------------
-   Фильтр концепций по типу.
-   -------------------------------------------------------------------------- */
-const workFilters = [...document.querySelectorAll('.work-filter')];
-if (workFilters.length) {
-  // Приглашающая карточка без data-kind остаётся видимой при любом фильтре.
-  const cards = [...document.querySelectorAll('.project-grid .project-card[data-kind]')];
-  const apply = kind => {
-    workFilters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === kind)));
-    cards.forEach(card => { card.hidden = kind !== 'all' && card.dataset.kind !== kind; });
-  };
-  workFilters.forEach(button => button.addEventListener('click', () => apply(button.dataset.filter)));
-}
-
-/* --------------------------------------------------------------------------
    Счётчики.
    -------------------------------------------------------------------------- */
 const counters = [...document.querySelectorAll('[data-count]')];
@@ -363,7 +349,7 @@ if (palette && typeof palette.showModal === 'function') {
   };
 
   const commands = [
-    { icon: '◍', title: 'Проекты', hint: 'СЕКЦИЯ', run: go('#work') },
+    { icon: '◍', title: 'Работы', hint: 'СЕКЦИЯ', run: go('#work') },
     { icon: '⌘', title: 'Услуги', hint: 'СЕКЦИЯ', run: go('#services') },
     { icon: '↔', title: 'Было и стало', hint: 'СЕКЦИЯ', run: go('#compare') },
     { icon: '◎', title: 'Обо мне', hint: 'СЕКЦИЯ', run: go('#about') },
@@ -371,11 +357,6 @@ if (palette && typeof palette.showModal === 'function') {
     { icon: '₽', title: 'Стоимость', hint: 'СЕКЦИЯ', run: go('#price') },
     { icon: '?', title: 'Вопросы и ответы', hint: 'СЕКЦИЯ', run: go('#faq') },
     { icon: '✳', title: 'Контакты', hint: 'СЕКЦИЯ', run: go('#contact') },
-    { icon: '↗', title: 'Кейс: Forma — архитектурное бюро', hint: 'КЕЙС', run: () => { location.href = '/projects/forma.html'; } },
-    { icon: '↗', title: 'Кейс: Крошка — кофейня', hint: 'КЕЙС', run: () => { location.href = '/projects/coffee.html'; } },
-    { icon: '↗', title: 'Кейс: Тише — студия красоты', hint: 'КЕЙС', run: () => { location.href = '/projects/beauty.html'; } },
-    { icon: '↗', title: 'Кейс: Поток — сервис учёта заказов', hint: 'КЕЙС', run: () => { location.href = '/projects/potok.html'; } },
-    { icon: '↗', title: 'Кейс: Довод — юридическая практика', hint: 'КЕЙС', run: () => { location.href = '/projects/dovod.html'; } },
     { icon: '☾', title: 'Переключить тему', hint: 'ВИД', run: () => document.querySelector('.theme-toggle')?.click() },
     ...Object.keys(ACCENTS).map(name => ({
       icon: '●',
@@ -501,8 +482,8 @@ if (finePointer.matches && !reduced.matches) {
     element.addEventListener('pointerleave', () => { element.style.transform = ''; });
   });
 
-  document.querySelectorAll('.project-card').forEach(card => {
-    const visual = card.querySelector('.project-visual');
+  document.querySelectorAll('.work-card').forEach(card => {
+    const visual = card.querySelector('.work-shot');
     if (!visual) return;
     card.addEventListener('pointermove', event => {
       const rect = visual.getBoundingClientRect();

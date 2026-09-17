@@ -11,7 +11,7 @@ const errors = [];
 page.on('pageerror', error => errors.push(error.message));
 page.on('response', response => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
 await fs.mkdir('test-results', { recursive: true });
-const routes = ['/', '/projects/forma.html', '/projects/coffee.html', '/projects/beauty.html', '/projects/potok.html', '/projects/dovod.html'];
+const routes = ['/'];
 const accessibility = [];
 try {
   await page.goto(base);
@@ -20,15 +20,13 @@ try {
   assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark', 'Dark theme is the default');
   assert.equal(await page.locator('html').evaluate(element => getComputedStyle(element).backgroundColor), 'rgb(24, 24, 27)', 'Neutral graphite background');
   assert.equal(await page.locator('.project-open').count(), 0, 'No white circles over project previews');
-  assert.deepEqual(await page.locator('.project-title-arrow').allTextContents(), Array(6).fill('↗'));
+  assert.deepEqual(await page.locator('.project-title-arrow').allTextContents(), ['↗'], 'Стрелка только у приглашающей карточки');
   await page.getByRole('button', { name: 'Включить светлую тему' }).click();
   assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
   await page.reload();
   assert.equal(await page.locator('html').getAttribute('data-theme'), 'light', 'Theme survives reload');
-  await page.goto(base + routes[1]);
-  assert.equal(await page.locator('html').getAttribute('data-theme'), 'light', 'Theme survives page navigation');
   await page.getByRole('button', { name: 'Включить тёмную тему' }).click();
-  await page.goto(base);
+  await page.reload();
   assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
   await page.locator('#profile-photo').scrollIntoViewIfNeeded();
   await page.waitForFunction(() => document.querySelector('#profile-photo').naturalWidth > 0);
@@ -67,7 +65,7 @@ try {
   const menu = page.getByRole('button', { name: 'Открыть меню' });
   await menu.click();
   assert.equal(await menu.getAttribute('aria-expanded'), 'true');
-  await page.locator('#mobile-nav').getByRole('link', { name: 'Проекты' }).click();
+  await page.locator('#mobile-nav').getByRole('link', { name: 'Работы' }).click();
   assert.equal(await menu.getAttribute('aria-expanded'), 'false');
   assert.ok(page.url().endsWith('#work'));
   await menu.click();
@@ -106,15 +104,11 @@ try {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.reload();
 
-  // Фильтр концепций: приглашающая карточка остаётся при любом выборе.
-  assert.equal(await page.locator('.project-card[data-kind]').count(), 5, 'Пять концепций');
-  for (const [kind, expected] of [['landing', 3], ['multi', 1], ['app', 1]]) {
-    await page.locator(`.work-filter[data-filter="${kind}"]`).click();
-    assert.equal(await page.locator('.project-card[data-kind]:not([hidden])').count(), expected, `Фильтр ${kind}`);
-    assert.equal(await page.locator('.project-invite:not([hidden])').count(), 1, 'Приглашающая карточка не прячется');
-  }
-  await page.locator('.work-filter[data-filter="all"]').click();
-  assert.equal(await page.locator('.project-card:not([hidden])').count(), 6, 'Фильтр «Все» возвращает всё');
+  // Работы: шесть карточек, пять с реальными превью.
+  assert.equal(await page.locator('.work-card').count(), 6, 'Пять работ и приглашающая карточка');
+  assert.equal(await page.locator('.work-frame img').count(), 5, 'У каждой работы есть превью');
+  const alts = await page.locator('.work-frame img').evaluateAll(list => list.map(i => i.alt));
+  assert.ok(alts.every(a => a && a.length > 10), 'У превью осмысленное описание');
 
   // Вкладки «было / стало»: ровно одна панель открыта, стрелки переключают.
   const tabs = page.locator('.compare-tab');
@@ -167,7 +161,7 @@ try {
   await page.evaluate(() => sessionStorage.clear());
   await page.goto(base);
   await page.waitForSelector('.preloader', { state: 'detached', timeout: 15000 });
-  console.log('Verified interactive layer: work filter, compare tabs and slider, price block, command palette, accent, marquee.');
+  console.log('Verified interactive layer: works grid, compare tabs and slider, price block, command palette, accent, marquee.');
 
   await fs.writeFile('test-results/accessibility.json', JSON.stringify(accessibility, null, 2));
   assert.deepEqual(errors, [], 'No browser errors or missing assets');
